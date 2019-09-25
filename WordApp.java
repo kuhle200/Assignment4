@@ -67,8 +67,8 @@ public class WordApp {
 	          String text = textEntry.getText();
 	          //[snip]
 			//this is for compering my words when they are falling
-              Thread myT=new Thread(new Checker(text,words));
-              myT.start();
+              Thread myComperer=new Thread(new Checker(text,words));
+              myComperer.start();
 	          
 	          textEntry.setText("");
 	          textEntry.requestFocus();
@@ -103,11 +103,15 @@ public class WordApp {
 			      {
 			    	  //[snip]
 			    	  //when you press resert button
-						score.resetScore();
-						for(int i=0;i<words.length;i++){
-						   words[i].resetWord(); 
-						}
-						WordPanelThrd.falling=false;
+						//score.resetScore();
+						//for(int i=0;i<words.length;i++){
+						   //words[i].resetWord(); 
+						//}
+						//WordPanelThrd.falling=false;
+						//does not help yet
+						NewGame restart = new NewGame(words);
+						Thread resetThread = new Thread(restart);
+						resetThread.start();
 			      }
 			    });
                 JButton quit = new JButton("Quit");

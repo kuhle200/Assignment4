@@ -33,10 +33,9 @@ public class WordPanel extends JPanel implements Runnable {
 		    	g.drawString(words[i].getWord(),words[i].getX(),words[i].getY()+20);  //y-offset for skeleton so that you can see the words	
 			//this is for making word disappeare if the reach the bottom
 		    //the red zone start at 480 so when the reach that point 
-		    //they should disappear at 475 because thats where read zone is in the middle
 		    //when it disappear you missed it so you should increment missed
 		    //and new word should appear
-		    if(words[i].getY()== 475){
+		    if(words[i].getY()== maxY){
 				WordApp.score.missedWord();
 				words[i].resetWord();
 			}
@@ -62,7 +61,7 @@ public class WordPanel extends JPanel implements Runnable {
 				myThread.start();				
 			}
 			
-			while(!done){
+			while(true){
 				repaint();
 			}
 		}

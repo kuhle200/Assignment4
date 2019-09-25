@@ -13,6 +13,8 @@ public class Checker extends Thread{
 	
 	public void run(){
 		for(int i=0;i<words.length;i++){
+			//used matchWord program to handle the words if the are the same
+			//the loop is for hadling if there are two same words on the screen for it will clear them both
 			if(words[i].matchWord(typedWord)==true){
 				WordApp.score.caughtWord(typedWord.length());
 			}

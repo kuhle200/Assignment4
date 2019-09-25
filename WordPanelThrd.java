@@ -10,10 +10,10 @@ public class WordPanelThrd extends Thread{
 	
 	public void run(){
 		while(falling == true){
-			words.drop(words.getSpeed());
+			words.drop(words.getSpeed()/800);
 		}
 		try{
-			Thread.sleep(600);
+			Thread.sleep(1000);
 		}
 		catch(InterruptedException e){
 			System.out.println(e);
