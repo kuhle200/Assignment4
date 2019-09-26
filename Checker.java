@@ -5,10 +5,14 @@ public class Checker extends Thread{
 	//WordRecord words;
 	WordRecord[] words;
 	String typedWord;
+	JLabel caught;
+    JLabel scr;
 	
-	public Checker(String typedWord,WordRecord[] words){
+	public Checker(String typedWord,WordRecord[] words,JLabel scr,JLabel caught){
 		this.typedWord = typedWord;
 		this.words =words;
+		this.scr = scr;
+		this.caught = caught;
 	}
 	
 	public void run(){
@@ -17,6 +21,8 @@ public class Checker extends Thread{
 			//the loop is for hadling if there are two same words on the screen for it will clear them both
 			if(words[i].matchWord(typedWord)==true){
 				WordApp.score.caughtWord(typedWord.length());
+                caught.setText("Caught: " + WordApp.score.getCaught() + "    ");
+                scr.setText("Score:" + WordApp.score.getScore()+ "    "); 				
 			}
 		}
 	}

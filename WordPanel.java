@@ -36,8 +36,10 @@ public class WordPanel extends JPanel implements Runnable {
 		    //when it disappear you missed it so you should increment missed
 		    //and new word should appear
 		    if(words[i].getY()== maxY){
-				WordApp.score.missedWord();
 				words[i].resetWord();
+				WordApp.score.missedWord();
+                WordApp.missed.setText("Missed:" + WordApp.score.getMissed()+ "    ");
+				
 			}
 		    }
 
@@ -56,7 +58,7 @@ public class WordPanel extends JPanel implements Runnable {
 			Thread myThread;
 			WordPanelThrd wt;
 			for(int i=0;i<words.length;i++){
-				wt = new WordPanelThrd(words[i],true);
+				wt = new WordPanelThrd(words[i]);
 				myThread = new Thread(wt);
 				myThread.start();				
 			}
