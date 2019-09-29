@@ -108,12 +108,17 @@ public class WordApp {
 			      {
 			    	  //[snip]
 			    	  //when you press resert button
-						//score.resetScore();
-						//for(int i=0;i<words.length;i++){
-						   //words[i].resetWord(); 
-						//}
-						//WordPanelThrd.falling=false;
-						//does not help yet
+			    	  
+						/*score.resetScore();
+						caught.setText("Caught: " + WordApp.score.getCaught() + "    ");
+						missed.setText("Missed:" + WordApp.score.getMissed()+ "    ");
+						scr.setText("Score:" + WordApp.score.getScore()+ "    ");
+						for(int i=0;i<words.length;i++){
+						   words[i].resetWord();
+						   words[i].resetPos(); 
+						}
+						w.done=true;*/
+						// does not help yet
 						NewGame restart = new NewGame(words);
 						Thread resetThread = new Thread(restart);
 						resetThread.start();

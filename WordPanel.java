@@ -15,6 +15,8 @@ public class WordPanel extends JPanel implements Runnable {
 		private WordRecord[] words;
 		private int noWords;
 		private int maxY;
+		 
+		Thread myThread;
 
 		
 		public void paintComponent(Graphics g) {
@@ -55,16 +57,28 @@ public class WordPanel extends JPanel implements Runnable {
 		
 		public void run() {
 			//add in code to animate this
-			Thread myThread;
-			WordPanelThrd wt;
+			
+			//WordPanelThrd wt;
 			for(int i=0;i<words.length;i++){
-				wt = new WordPanelThrd(words[i]);
-				myThread = new Thread(wt);
+				myThread = new Thread(new WordPanelThrd(words[i]));
 				myThread.start();				
 			}
 			
-			while(true){
+			while(!done && WordApp.score.getTotal() < WordApp.totalWords){
+				/*for(int i=0;i<words.length;i++){
+				words[i].drop(words[i].getSpeed()/100);
+				}
+			
+				
+				try{Thread.sleep(100);}
+			catch(InterruptedException e){
+			System.out.println(e);}*/
 				repaint();
+			}
+			if(done){
+				for(int i=0;i<words.length;i++){
+					words[i].resetPos();
+				}	
 			}
 		}
 

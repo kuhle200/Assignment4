@@ -9,9 +9,8 @@ public class WordPanelThrd extends Thread{
 	}
 	
 	public void run(){
-		while(falling == true){
-			words.drop(words.getSpeed()/110);
-		}
+		while(falling == true && WordApp.score.getTotal() < WordApp.totalWords){
+			words.drop(words.getSpeed()/20);
 		try{
 			Thread.sleep(1000);
 		}
@@ -19,6 +18,6 @@ public class WordPanelThrd extends Thread{
 			System.out.println(e);
 			System.exit(0);
 		}
-		
+	}
 	}
 }
